@@ -1,9 +1,7 @@
 {
 	"files.associations": {
-		"signal.h": "c",
-		"array": "c",
-		"string": "c",
-		"string_view": "c",
-		"span": "c"
+		"stdio.h": "c",
+		"random": "c",
+		"unistd.h": "c"
 	}
 }
