@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 17:16:08 by jde-carv          #+#    #+#             */
-/*   Updated: 2025/06/17 20:52:58 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/06/17 23:06:31 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_game
 	t_entity	entities[10];
 	void		*mlx;
 	void		*window;
-	int			keymap[0xBFFFF];
+	int			keymap[256];
 	int			count_entities;
 } t_game;
 
@@ -57,11 +57,12 @@ void	draw_system(t_game *game, t_entity *entity)
 {
 	if(!entity->image || !entity->position)
 	return ;
-	mlx_put_image_to_window(game->mlx, game->window, entity->image->img, entity->position->x, entity->position->y);
+	mlx_put_image_to_window(game->mlx, game->window, entity->image->img, (int)entity->position->x, (int)entity->position->y);
 }
 
 void	gravity_system(t_game *game, t_entity *entity)
 {
+	(void) game;
 	if(!entity->position || !entity->gravity)
 		return ;
 	if(entity->position->y > 0 && entity->position->y < 282)
@@ -121,21 +122,12 @@ void	load_level(t_game *game)
 	player->position->x = 0;
 	player->position->y = 1;
 	player->image = malloc(sizeof(t_image));
-	player->image->img = mlx_xpm_file_to_image(game->mlx, "./assets/idle/idle_00.xpm", &player->image->width, &player->image->height);
+	player->image->img = mlx_xpm_file_to_image(game->mlx, "../assets/idle/idle01.xpm", &player->image->width, &player->image->height);
 	player->gravity = malloc(sizeof(t_gravity));
 	player->keyboard = malloc(sizeof(t_keyboard));
 	game->entities[game->count_entities] = *player;
 	game->count_entities++;
 
-	t_entity *floor;
-	floor = malloc(sizeof(t_entity));
-	floor->position = malloc(sizeof(t_position));
-	floor->position->x = 0;
-	floor->position->y = 310;
-	floor->image = malloc(sizeof(t_image));
-	floor->image->img = mlx_xpm_file_to_image(game->mlx, "/home/jde-carv/Desktop/42/SO_LONG/assets/floor/floor_00.xpm", &floor->image->width, &floor->image->height);
-	game->entities[game->count_entities] = *floor;
-	game->count_entities++;
 }
 int main()
 {
@@ -145,10 +137,6 @@ int main()
 	game.window = mlx_new_window(game.mlx, 600, 342, "joguinho");
 	game.count_entities = 0;
 	load_level(&game);
-	//while(1)
-	//{
-	//	game_loop(&game);
-	//}
 	mlx_loop_hook(game.mlx, game_loop, &game);
 	mlx_hook(game.window, 2, 1L<< 0, keydown, &game);
 	mlx_hook(game.window, 3, 1L<< 1, keyup, &game);
