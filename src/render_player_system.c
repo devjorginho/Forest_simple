@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   render_player_system.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/17 08:45:15 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/17 12:47:13 by devjorginho      ###   ########.fr       */
+/*   Created: 2025/06/17 12:00:53 by devjorginho       #+#    #+#             */
+/*   Updated: 2025/06/17 12:31:35 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int main()
+void	render_player(t_game *game)
 {
-	t_game	*game;
-	
-	game = init_game();
-	//render_player(game);
-	mlx_loop_hook(game->mlx, game_loop, game);
-	mlx_hook(game->window, 2, 1L<<0, keydown, game);
-	mlx_hook(game->window, 3, 1L<<1, keyup, game);
-	mlx_loop(game->mlx);
-	return(0);
+	mlx_put_image_to_window(
+		game->mlx, 
+		game->window,
+		game->player.img_player,
+		game->player.p_x,
+		game->player.p_y
+	);
 }
-

@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/17 08:45:15 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/17 12:47:13 by devjorginho      ###   ########.fr       */
+/*   Created: 2025/06/17 10:03:04 by devjorginho       #+#    #+#             */
+/*   Updated: 2025/06/17 12:47:43 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#ifndef SO_LONG_H
+# define SO_LONG_H
 
-int main()
-{
-	t_game	*game;
-	
-	game = init_game();
-	//render_player(game);
-	mlx_loop_hook(game->mlx, game_loop, game);
-	mlx_hook(game->window, 2, 1L<<0, keydown, game);
-	mlx_hook(game->window, 3, 1L<<1, keyup, game);
-	mlx_loop(game->mlx);
-	return(0);
-}
+# include "../minilibx-linux/mlx.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include "game.h"
+# include "player.h"
 
+
+// Systems
+
+t_game		*init_game(void);
+t_player	init_player(t_game *game);
+void		render_player(t_game *game);
+int			game_loop(void *param);
+int			keydown(int keycode, t_game *game);
+int			keyup(int keycode, t_game *game);
+
+#endif

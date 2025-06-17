@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_game_system.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/17 08:45:15 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/17 12:47:13 by devjorginho      ###   ########.fr       */
+/*   Created: 2025/06/17 10:35:47 by devjorginho       #+#    #+#             */
+/*   Updated: 2025/06/17 11:55:52 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int main()
+t_game	*init_game(void)
 {
-	t_game	*game;
+	t_game *game;
 	
-	game = init_game();
-	//render_player(game);
-	mlx_loop_hook(game->mlx, game_loop, game);
-	mlx_hook(game->window, 2, 1L<<0, keydown, game);
-	mlx_hook(game->window, 3, 1L<<1, keyup, game);
-	mlx_loop(game->mlx);
-	return(0);
+	game = malloc(sizeof(t_game));
+	if(!game)
+		return (NULL);
+	game->mlx = mlx_init();
+	if(!game->mlx)
+	{
+		free (game);
+		return (NULL);
+	}
+	game->window = mlx_new_window(game->mlx, 640, 342, "jogo do jorginho!");
+	if(!game->window)
+	{
+		free (game);
+		return (NULL);
+	}
+	game->player = init_player(game);
+	return (game);
 }
-

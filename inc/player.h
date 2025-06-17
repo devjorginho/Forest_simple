@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/17 08:45:15 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/17 12:47:13 by devjorginho      ###   ########.fr       */
+/*   Created: 2025/06/17 10:06:31 by devjorginho       #+#    #+#             */
+/*   Updated: 2025/06/17 13:38:52 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#ifndef PLAYER_H
+# define PLAYER_H
 
-int main()
+#define RUN_FRAMES 16
+#define IDLE_FRAMES 4
+
+typedef	struct	s_player
 {
-	t_game	*game;
-	
-	game = init_game();
-	//render_player(game);
-	mlx_loop_hook(game->mlx, game_loop, game);
-	mlx_hook(game->window, 2, 1L<<0, keydown, game);
-	mlx_hook(game->window, 3, 1L<<1, keyup, game);
-	mlx_loop(game->mlx);
-	return(0);
-}
+	void	*p_idle;
+	void	*run_right[RUN_FRAMES];
+	void	*run_left[RUN_FRAMES];
+	void	*idle[RUN_FRAMES];
+	void	*img_player;
+	int		p_x;
+	int		p_y;
+	int		width;
+	int		height;
+	int		is_moving_right;
+	int		is_moving_left;
+} t_player;
 
+#endif

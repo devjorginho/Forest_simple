@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/17 08:45:15 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/17 12:47:13 by devjorginho      ###   ########.fr       */
+/*   Created: 2025/06/17 10:11:10 by devjorginho       #+#    #+#             */
+/*   Updated: 2025/06/17 10:13:09 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#ifndef GAME_H
+# define GAME_H
 
-int main()
+# include "player.h"
+
+typedef struct s_game
 {
-	t_game	*game;
-	
-	game = init_game();
-	//render_player(game);
-	mlx_loop_hook(game->mlx, game_loop, game);
-	mlx_hook(game->window, 2, 1L<<0, keydown, game);
-	mlx_hook(game->window, 3, 1L<<1, keyup, game);
-	mlx_loop(game->mlx);
-	return(0);
-}
+	void		*mlx;
+	void		*window;
+	t_player	player;
+} t_game;
 
+#endif

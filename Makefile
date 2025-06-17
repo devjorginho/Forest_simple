@@ -3,36 +3,51 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+         #
+#    By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/06/16 18:03:47 by jde-carv          #+#    #+#              #
-#    Updated: 2025/06/16 19:26:21 by jde-carv         ###   ########.fr        #
+#    Created: 2025/06/17 08:45:00 by devjorginho       #+#    #+#              #
+#    Updated: 2025/06/17 12:48:06 by devjorginho      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long
+NAME		= so_long
 
-SRC_DIR = src
-INC_DIR = include
-MLX_DIR = minilibx-linux
+SRC_DIR		= src
+INC_DIR		= inc
+MLX_DIR		= minilibx-linux
 
-SRCS = $(SRC_DIR)/main.c
-OBJS = $(SRCS:.c=.o)
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror -I$(INC_DIR) -I$(MLX_DIR)
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I$(INC_DIR) -I$(MLX_DIR)
+SRC			= \
+			$(SRC_DIR)/main.c \
+			$(SRC_DIR)/init_game_system.c \
+			$(SRC_DIR)/init_player_system.c \
+			$(SRC_DIR)/render_player_system.c \
+			$(SRC_DIR)/game_loop_system.c \
+			$(SRC_DIR)/keyboard_system.c 
 
-MLX_FLAGS = -L$(MLX_DIR) -lmlx -lX11 -lXext -lm -lz
+
+OBJ			= $(SRC:.c=.o)
+
+MLX_LIB		= $(MLX_DIR)/libmlx_Linux.a
+LIBS		= -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAGS) -o $(NAME)
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBS) -o $(NAME)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+run: $(NAME)
+	./$(NAME)

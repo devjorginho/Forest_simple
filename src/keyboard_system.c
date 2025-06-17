@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   keyboard_system.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/17 08:45:15 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/17 12:47:13 by devjorginho      ###   ########.fr       */
+/*   Created: 2025/06/17 12:43:39 by devjorginho       #+#    #+#             */
+/*   Updated: 2025/06/17 13:01:15 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int main()
+int	keydown(int keycode, t_game *game)
 {
-	t_game	*game;
-	
-	game = init_game();
-	//render_player(game);
-	mlx_loop_hook(game->mlx, game_loop, game);
-	mlx_hook(game->window, 2, 1L<<0, keydown, game);
-	mlx_hook(game->window, 3, 1L<<1, keyup, game);
-	mlx_loop(game->mlx);
-	return(0);
+	if (keycode == 100)
+		game->player.is_moving_right = 1;
+	if (keycode == 97)
+		game->player.is_moving_left = 1;
+	return (0);
 }
-
+int	keyup(int keycode, t_game *game)
+{
+	if (keycode == 100)
+		game->player.is_moving_right = 0;
+	if (keycode == 97)
+		game->player.is_moving_left = 0;
+	return (0);
+}
