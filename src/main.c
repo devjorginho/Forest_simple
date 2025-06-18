@@ -6,7 +6,7 @@
 /*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 17:16:08 by jde-carv          #+#    #+#             */
-/*   Updated: 2025/06/17 23:46:22 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/06/18 12:10:42 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,15 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "../minilibx-linux/mlx.h"
+
 #define MAX_KEY_MAP 0xFFFFA
 #define N_FRAMES 12
+
+typedef struct s_collision
+{
+	float 	width;
+	float 	height;
+} t_collision;
 
 typedef struct s_position
 {
@@ -44,6 +51,7 @@ typedef	struct s_entity
 	t_image		*image;
 	t_gravity	*gravity;
 	t_keyboard	*keyboard;
+	t_collision	*collision;
 } t_entity;
 
 typedef struct s_game
@@ -55,6 +63,43 @@ typedef struct s_game
 	int			count_entities;
 } t_game;
 
+int	collision_checker(t_entity *a, t_entity *b)
+{
+	if(!a->position || !a->collision || !b->position || !b->collision)
+		return (0);
+	float ax = a->position->x;
+	float ay = a->position->y;
+	float awidth = a->collision->width;
+	float aheight = a->collision->height;
+	
+	float bx = b->position->x;
+	float by = b->position->y;
+	float bwidth = b->collision->width;
+	float bheight = b->collision->height;
+
+	if (ax < bx + bwidth && ax + awidth > bx &&
+		ay < by + bheight && ay + aheight > by)
+		return (1);
+	return (0);
+}
+void	collision_system(t_game *game, t_entity *entity)
+{
+	int i;
+
+	i = 0;
+	if(!entity->position || !entity->collision)
+		return;
+	while (i < game->count_entities)
+	{
+		t_entity *b_entity = &game->entities[i];
+		if (entity != b_entity && b_entity->position && b_entity->collision)
+		{
+			if (collision_checker(entity, b_entity))
+				printf("Colidindo");
+		}
+		i++;
+	}
+}
 void	draw_system(t_game *game, t_entity *entity)
 {
 	if(!entity->image || !entity->position)
@@ -109,6 +154,7 @@ int	game_loop(t_game *game)
 	{
 		draw_system(game, &game->entities[i]);
 		movement_system(game, &game->entities[i]);
+		collision_system(game, &game->entities[i]);
 		gravity_system(game, &game->entities[i]);
 		jump_system(game, &game->entities[i]);
 		i++;
@@ -126,8 +172,26 @@ void	load_level(t_game *game)
 	player->image = malloc(sizeof(t_image));
 	player->image->img = mlx_xpm_file_to_image(game->mlx, "/home/devjorginho/Desktop/42/SO_LONG/assets/idle/idle01.xpm", &player->image->width, &player->image->height);
 	player->gravity = malloc(sizeof(t_gravity));
+	player->collision = malloc(sizeof(t_collision));
+	player->collision->width = 32;  // ou o tamanho que quiser
+	player->collision->height = 32;
 	player->keyboard = malloc(sizeof(t_keyboard));
 	game->entities[game->count_entities] = *player;
+	game->count_entities++;
+
+	t_entity *player2;
+	player2 = malloc(sizeof(t_entity));
+	player2->position = malloc(sizeof(t_position));
+	player2->position->x = 128;
+	player2->position->y = 64;
+	player2->image = malloc(sizeof(t_image));
+	player2->image->img = mlx_xpm_file_to_image(game->mlx, "/home/devjorginho/Desktop/42/SO_LONG/assets/idle/idle01.xpm", &player2->image->width, &player2->image->height);
+	player2->gravity = malloc(sizeof(t_gravity));
+	player2->collision = malloc(sizeof(t_collision));
+	player2->collision->width = 32;  // ou o tamanho que quiser
+	player2->collision->height = 32;
+	//player2->keyboard = malloc(sizeof(t_keyboard));
+	game->entities[game->count_entities] = *player2;
 	game->count_entities++;
 }
 int main()
