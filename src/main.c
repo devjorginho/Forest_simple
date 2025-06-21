@@ -6,144 +6,12 @@
 /*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 17:16:08 by jde-carv          #+#    #+#             */
-/*   Updated: 2025/06/18 12:10:42 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/06/21 17:18:19 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include "../minilibx-linux/mlx.h"
+#include "../inc/so_long.h"
 
-#define MAX_KEY_MAP 0xFFFFA
-#define N_FRAMES 12
-
-typedef struct s_collision
-{
-	float 	width;
-	float 	height;
-} t_collision;
-
-typedef struct s_position
-{
-	float	x;
-	float	y;
-} t_position;
-
-typedef struct s_keyboard
-{
-} t_keyboard;
-
-typedef struct	s_image
-{
-	void	*img;
-	int		width;
-	int		height;
-} t_image;
-
-typedef struct	s_gravity
-{
-} t_gravity;
-
-typedef	struct s_entity
-{
-	t_position	*position;
-	t_image		*image;
-	t_gravity	*gravity;
-	t_keyboard	*keyboard;
-	t_collision	*collision;
-} t_entity;
-
-typedef struct s_game
-{
-	t_entity	entities[10];
-	void		*mlx;
-	void		*window;
-	int			keymap[MAX_KEY_MAP];
-	int			count_entities;
-} t_game;
-
-int	collision_checker(t_entity *a, t_entity *b)
-{
-	if(!a->position || !a->collision || !b->position || !b->collision)
-		return (0);
-	float ax = a->position->x;
-	float ay = a->position->y;
-	float awidth = a->collision->width;
-	float aheight = a->collision->height;
-	
-	float bx = b->position->x;
-	float by = b->position->y;
-	float bwidth = b->collision->width;
-	float bheight = b->collision->height;
-
-	if (ax < bx + bwidth && ax + awidth > bx &&
-		ay < by + bheight && ay + aheight > by)
-		return (1);
-	return (0);
-}
-void	collision_system(t_game *game, t_entity *entity)
-{
-	int i;
-
-	i = 0;
-	if(!entity->position || !entity->collision)
-		return;
-	while (i < game->count_entities)
-	{
-		t_entity *b_entity = &game->entities[i];
-		if (entity != b_entity && b_entity->position && b_entity->collision)
-		{
-			if (collision_checker(entity, b_entity))
-				printf("Colidindo");
-		}
-		i++;
-	}
-}
-void	draw_system(t_game *game, t_entity *entity)
-{
-	if(!entity->image || !entity->position)
-	return ;
-	mlx_put_image_to_window(game->mlx, game->window, entity->image->img, (int)entity->position->x, (int)entity->position->y);
-}
-void	gravity_system(t_game *game, t_entity *entity)
-{
-	(void) game;
-	if(!entity->position || !entity->gravity)
-		return ;
-	if(entity->position->y > 0 && entity->position->y < 300)
-		entity->position->y += 0.08f;
-	//printf("%f\n", entity->position->y);
-}
-void	jump_system(t_game *game, t_entity *entity)
-{
-	if(!entity->keyboard)
-		return;
-	if(game->keymap[119])
-		entity->position->y -= 0.25f;
-}
-void	movement_system(t_game *game, t_entity *entity)
-{
-	if(!entity->keyboard)
-		return;
-	if(game->keymap[100] && entity->position->x < 1000)
-		entity->position->x += 0.07f;
-	if(game->keymap[97] && entity->position->x > 0)
-		entity->position->x -= 0.07f;
-}
-int	keydown(int keycode, t_game *game)
-{
-	game->keymap[keycode] = 1;
-	(void) game;
-	return (0);
-}
-int	keyup(int keycode, t_game *game)
-{
-	game->keymap[keycode] = 0;
-
-	(void) game;
-	return (0);
-}
 int	game_loop(t_game *game)
 {
 	int i;
@@ -155,8 +23,8 @@ int	game_loop(t_game *game)
 		draw_system(game, &game->entities[i]);
 		movement_system(game, &game->entities[i]);
 		collision_system(game, &game->entities[i]);
-		gravity_system(game, &game->entities[i]);
 		jump_system(game, &game->entities[i]);
+		gravity_system(game, &game->entities[i]);
 		i++;
 	}
 	return(0);
@@ -172,6 +40,12 @@ void	load_level(t_game *game)
 	player->image = malloc(sizeof(t_image));
 	player->image->img = mlx_xpm_file_to_image(game->mlx, "/home/devjorginho/Desktop/42/SO_LONG/assets/idle/idle01.xpm", &player->image->width, &player->image->height);
 	player->gravity = malloc(sizeof(t_gravity));
+	player->gravity->can_jump = 1;
+	player->gravity->is_jumping = 0;
+	player->gravity->velocity = 0.0f;
+	player->gravity->jump_request = 0;
+
+
 	player->collision = malloc(sizeof(t_collision));
 	player->collision->width = 32;  // ou o tamanho que quiser
 	player->collision->height = 32;
