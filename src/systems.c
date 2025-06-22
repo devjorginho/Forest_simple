@@ -6,7 +6,7 @@
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:35:42 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/22 20:07:54 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/06/22 23:42:59 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,37 +35,27 @@ void	draw_system(t_game *game, t_entity *entity)
 {
 	if (!entity->image || !entity->position)
 		return ;
-	mlx_put_image_to_window(game->mlx, game->window, entity->image->img,
+	mlx_put_image_to_window(game->mlx, game->window, entity->image->img[(game->n_frames / 6 ) % 11],
 		(int)entity->position->x, (int)entity->position->y);
 }
 void	gravity_system(t_game *game, t_entity *entity)
 {
-	(void)game;
-	if (!entity->position || !entity->gravity)
-		return ;
+	(void) game;
+	if(!entity->gravity || !entity->position)
+		return;
 	if (entity->gravity->is_jumping)
+		entity->velocity->y += 0.35f;
+	if (game->keymap['w'] && !entity->gravity->is_jumping)
 	{
-		entity->velocity->y = 1.0f;
-		printf("%f\n" ,entity->velocity->y);
-		if (entity->gravity->velocity >= 0.0f)
-			entity->gravity->is_jumping = 0;
+		entity->velocity->y = -8.f;
+		entity->gravity->is_jumping = 1;
 	}
+	entity->position->y += entity->velocity->y;
 	if (entity->position->y >= 600)
 	{
+		entity->position->y = 600;
 		entity->velocity->y = 0;
 		entity->gravity->is_jumping = 0;
-	}
-}
-
-void	jump_system(t_game *game, t_entity *entity)
-{
-	(void)game;
-	if (!entity->keyboard || !entity->gravity || !entity->position)
-		return ;
-	if (entity->gravity->is_jumping == 0)
-	{
-		entity->velocity->y = -2.0f;
-		entity->gravity->is_jumping = 1;
 	}
 }
 
@@ -75,9 +65,11 @@ void	movement_system(t_game *game, t_entity *entity)
 
 	if (!entity->velocity || !entity->keyboard || !entity->position)
 		return ;
-	entity->position->y += entity->velocity->y;
 	if (game->keymap['d'])
-		entity->position->x += 0.03f;
+		entity->velocity->x = 1.7f;
 	else if (game->keymap['a'])
-		entity->position->x -= 0.03f;
+		entity->velocity->x = -1.7f;
+	if (!game->keymap['d'] && !game->keymap['a'])
+		entity->velocity->x = 0;
+	entity->position->x += entity->velocity->x;
 }

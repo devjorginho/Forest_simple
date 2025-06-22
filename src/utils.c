@@ -6,7 +6,7 @@
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:44:11 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/22 19:58:42 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/06/22 21:31:07 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ int	keydown(int keycode, t_game *game)
 	player = &game->entities[0];
 	if (keycode >= 0 && keycode < MAX_KEY_MAP)
 		game->keymap[keycode] = 1;
-	if (keycode == 119 && !player->gravity->is_jumping)
-			player->gravity->is_jumping = 1;
 	return (0);
 }
 

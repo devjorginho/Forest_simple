@@ -6,7 +6,7 @@
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 17:16:08 by jde-carv          #+#    #+#             */
-/*   Updated: 2025/06/22 19:49:04 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/06/22 23:40:36 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,11 @@ int	game_loop(t_game *game)
 		collision_system(game, &game->entities[i++]);
 	i = 0;
 	while (i < game->count_entities)
-		jump_system(game, &game->entities[i++]);
-	i = 0;
-	while (i < game->count_entities)
 		gravity_system(game, &game->entities[i++]);
 	usleep(10000);
+		game->n_frames++;
 	return (0);
 }
-
 void	load_level(t_game *game)
 {
 	t_entity	*player;

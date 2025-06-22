@@ -6,7 +6,7 @@
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:33:06 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/22 18:10:41 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/06/22 23:12:12 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,24 @@ typedef struct s_keyboard
 
 typedef struct	s_image
 {
-	void	*img;
+	void	**img;
 	int		width;
 	int		height;
 } t_image;
 
+typedef struct	s_data 
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+} t_data;
+
 typedef struct	s_gravity
 {
-	int		can_jump;
 	int		is_jumping;
 	float	velocity;
-	int		jump_request;
 }	t_gravity;
 
 
