@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   components.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:33:06 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/21 17:15:35 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/06/22 18:10:41 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ typedef struct s_collision
 	float 	width;
 	float 	height;
 } t_collision;
+
+typedef struct	s_velocity
+{
+	float x;
+	float y;
+} t_velocity;
 
 typedef struct s_position
 {

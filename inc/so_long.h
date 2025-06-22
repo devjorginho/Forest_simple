@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:58:48 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/21 16:58:49 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/06/22 17:18:02 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,8 @@ void	movement_system(t_game *game, t_entity *entity);
 int	keydown(int keycode, t_game *game);
 int	keyup(int keycode, t_game *game);
 int	collision_checker(t_entity *a, t_entity *b);
+
+t_entity	*new_player(t_game *game);
+t_entity	*new_player2(t_game *game);
 
 #endif
