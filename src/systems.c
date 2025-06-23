@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   systems.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:35:42 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/22 23:42:59 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/06/23 13:17:00 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,33 @@ void	draw_system(t_game *game, t_entity *entity)
 {
 	if (!entity->image || !entity->position)
 		return ;
-	mlx_put_image_to_window(game->mlx, game->window, entity->image->img[(game->n_frames / 6 ) % 11],
-		(int)entity->position->x, (int)entity->position->y);
+
+	if (entity->animation->p_runing_r)
+	{
+		mlx_put_image_to_window(game->mlx, game->window,
+			entity->image->rr_img[(game->n_frames / 6) % 8],
+			(int)entity->position->x, (int)entity->position->y);
+	}
+	else if (entity->animation->p_runing_l)
+	{
+		mlx_put_image_to_window(game->mlx, game->window,
+			entity->image->rl_img[(game->n_frames / 6) % 8],
+			(int)entity->position->x, (int)entity->position->y);
+	}
+	else if (entity->animation->last_direction == 0)
+	{
+		mlx_put_image_to_window(game->mlx, game->window,
+			entity->image->idler_img[(game->n_frames / 6) % 12],
+			(int)entity->position->x, (int)entity->position->y);
+	}
+	else
+	{
+		mlx_put_image_to_window(game->mlx, game->window,
+			entity->image->idlel_img[(game->n_frames / 6) % 12],
+			(int)entity->position->x, (int)entity->position->y);
+	}
 }
+		
 void	gravity_system(t_game *game, t_entity *entity)
 {
 	(void) game;
@@ -59,17 +83,29 @@ void	gravity_system(t_game *game, t_entity *entity)
 	}
 }
 
-void	movement_system(t_game *game, t_entity *entity)
+void movement_system(t_game *game, t_entity *entity)
 {
-	(void) game;
-
-	if (!entity->velocity || !entity->keyboard || !entity->position)
-		return ;
-	if (game->keymap['d'])
+    if (!entity->velocity || !entity->keyboard || !entity->position)
+        return ;
+   if (game->keymap['d'])
+	{
+		entity->animation->p_runing_r = 1;
+		entity->animation->p_runing_l = 0;
+		entity->animation->last_direction = 0;
 		entity->velocity->x = 1.7f;
+	}
 	else if (game->keymap['a'])
+	{
+		entity->animation->p_runing_l = 1;
+		entity->animation->p_runing_r = 0;
+		entity->animation->last_direction = 1;
 		entity->velocity->x = -1.7f;
-	if (!game->keymap['d'] && !game->keymap['a'])
+	}
+	else
+	{
+		entity->animation->p_runing_r = 0;
+		entity->animation->p_runing_l = 0;
 		entity->velocity->x = 0;
-	entity->position->x += entity->velocity->x;
+	}
+    entity->position->x += entity->velocity->x;
 }

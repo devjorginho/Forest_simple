@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+         #
+#    By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/21 17:00:00 by devjorginho       #+#    #+#              #
-#    Updated: 2025/06/22 16:43:13 by jde-carv         ###   ########.fr        #
+#    Updated: 2025/06/23 01:21:57 by devjorginho      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

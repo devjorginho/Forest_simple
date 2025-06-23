@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:44:11 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/22 21:31:07 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/06/23 11:16:11 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@ int	collision_checker(t_entity *a, t_entity *b)
 
 int	keydown(int keycode, t_game *game)
 {
-	t_entity	*player;
-
-	player = &game->entities[0];
 	if (keycode >= 0 && keycode < MAX_KEY_MAP)
 		game->keymap[keycode] = 1;
 	return (0);
@@ -51,11 +48,6 @@ int	keydown(int keycode, t_game *game)
 
 int	keyup(int keycode, t_game *game)
 {
-	t_entity *player;
-
-	player = &game->entities[0];
 	game->keymap[keycode] = 0;
-	//if (keycode == 119)
-	//	player->velocity->y = 0;	
 	return (0);
 }

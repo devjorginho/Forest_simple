@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 17:16:08 by jde-carv          #+#    #+#             */
-/*   Updated: 2025/06/22 23:40:36 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/06/23 11:39:11 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	game_loop(t_game *game)
 
 	i = 0;
 	mlx_clear_window(game->mlx, game->window);
+	mlx_put_image_to_window(game->mlx, game->window, game->bg_img, 0, 0);
 	while (i < game->count_entities)
 		draw_system(game, &game->entities[i++]);
 	i = 0;
@@ -35,11 +36,7 @@ int	game_loop(t_game *game)
 }
 void	load_level(t_game *game)
 {
-	t_entity	*player;
-	//t_entity	*player2;
-
-	player = new_player(game);
-	//player2 = new_player2(game);
+	new_player(game);
 }
 int	main(void)
 {
@@ -47,6 +44,7 @@ int	main(void)
 
 	game.mlx = mlx_init();
 	game.window = mlx_new_window(game.mlx, 1080, 768, "joguinho");
+	load_background(&game);
 	load_level(&game);
 	mlx_loop_hook(game.mlx, game_loop, &game);
 	mlx_hook(game.window, 2, 1L << 0, keydown, &game);

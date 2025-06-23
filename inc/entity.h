@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   entity.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:30:58 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/22 23:22:57 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/06/23 11:11:22 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef	struct s_entity
 	t_keyboard	*keyboard;
 	t_collision	*collision;
 	t_velocity	*velocity;
+	t_animation	*animation;
 } t_entity;
 
 #endif

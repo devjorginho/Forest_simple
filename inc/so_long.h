@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:58:48 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/22 23:24:32 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/06/23 13:10:39 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,16 @@ void	movement_system(t_game *game, t_entity *entity);
 void	*scale_frame_buffer(t_game *game, t_image *image, int scale);
 
 // Utility functions
-int	keydown(int keycode, t_game *game);
-int	keyup(int keycode, t_game *game);
-int	collision_checker(t_entity *a, t_entity *b);
+int		keydown(int keycode, t_game *game);
+int		keyup(int keycode, t_game *game);
+int		collision_checker(t_entity *a, t_entity *b);
+void	load_idler_image(t_game *game, t_entity *player);
+void	load_idlel_image(t_game *game, t_entity *player);
+void	load_rright_image(t_game *game, t_entity *player);
+void	load_rleft_image(t_game *game, t_entity *player);
+void	load_background(t_game *game);
 
+//Entities
 t_entity	*new_player(t_game *game);
 
 
