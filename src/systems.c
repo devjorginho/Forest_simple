@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   systems.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:35:42 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/23 13:17:00 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/06/23 22:10:12 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,31 @@ void	draw_system(t_game *game, t_entity *entity)
 {
 	if (!entity->image || !entity->position)
 		return ;
-
-	if (entity->animation->p_runing_r)
+	if (entity->gravity->is_jumping && entity->animation->last_direction == 0 && entity->velocity->y < 0)
+	{
+		mlx_put_image_to_window(game->mlx, game->window,
+			entity->image->jumpr_img[0],
+			(int)entity->position->x, (int)entity->position->y);
+	}
+	else if (entity->gravity->is_jumping && entity->animation->last_direction == 1 && entity->velocity->y < 0)
+	{
+		mlx_put_image_to_window(game->mlx, game->window,
+			entity->image->jumpl_img[0],
+			(int)entity->position->x, (int)entity->position->y);
+	}
+	else if (entity->velocity->y > 0 && entity->animation->last_direction == 0)
+	{
+		mlx_put_image_to_window(game->mlx, game->window,
+			entity->image->landingr_img[0],
+			(int)entity->position->x, (int)entity->position->y);
+	}
+	else if (entity->velocity->y > 0 && entity->animation->last_direction == 1)
+	{
+		mlx_put_image_to_window(game->mlx, game->window,
+			entity->image->landingl_img[0],
+			(int)entity->position->x, (int)entity->position->y);
+	}
+	else if (entity->animation->p_runing_r)
 	{
 		mlx_put_image_to_window(game->mlx, game->window,
 			entity->image->rr_img[(game->n_frames / 6) % 8],
@@ -71,7 +94,7 @@ void	gravity_system(t_game *game, t_entity *entity)
 		entity->velocity->y += 0.35f;
 	if (game->keymap['w'] && !entity->gravity->is_jumping)
 	{
-		entity->velocity->y = -8.f;
+		entity->velocity->y = -9.f;
 		entity->gravity->is_jumping = 1;
 	}
 	entity->position->y += entity->velocity->y;
@@ -87,12 +110,14 @@ void movement_system(t_game *game, t_entity *entity)
 {
     if (!entity->velocity || !entity->keyboard || !entity->position)
         return ;
-   if (game->keymap['d'])
+   	else if (game->keymap['d'])
 	{
 		entity->animation->p_runing_r = 1;
 		entity->animation->p_runing_l = 0;
 		entity->animation->last_direction = 0;
 		entity->velocity->x = 1.7f;
+		if(game->keymap[65505])
+			entity->velocity->x += 3.2f;
 	}
 	else if (game->keymap['a'])
 	{
@@ -100,6 +125,8 @@ void movement_system(t_game *game, t_entity *entity)
 		entity->animation->p_runing_r = 0;
 		entity->animation->last_direction = 1;
 		entity->velocity->x = -1.7f;
+		if(game->keymap[65505])
+			entity->velocity->x -= 3.2f;
 	}
 	else
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:58:48 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/23 13:10:39 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/06/23 21:00:57 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@ void	load_idler_image(t_game *game, t_entity *player);
 void	load_idlel_image(t_game *game, t_entity *player);
 void	load_rright_image(t_game *game, t_entity *player);
 void	load_rleft_image(t_game *game, t_entity *player);
+void	load_jumpr_image(t_game *game, t_entity *player);
+void	load_jumpl_image(t_game *game, t_entity *player);
+
+void	load_landingl_image(t_game *game, t_entity *player);
+void	load_landingr_image(t_game *game, t_entity *player);
+
 void	load_background(t_game *game);
 
 //Entities

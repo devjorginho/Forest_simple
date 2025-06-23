@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:44:11 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/23 11:16:11 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/06/23 22:00:27 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	collision_checker(t_entity *a, t_entity *b)
 
 int	keydown(int keycode, t_game *game)
 {
+	printf("Keycode pressed: %d\n", keycode);
+	fflush(stdout);
 	if (keycode >= 0 && keycode < MAX_KEY_MAP)
 		game->keymap[keycode] = 1;
 	return (0);

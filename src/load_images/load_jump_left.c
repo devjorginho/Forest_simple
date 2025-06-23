@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_background.c                                  :+:      :+:    :+:   */
+/*   load_jump_left.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/23 01:38:22 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/23 17:31:57 by jde-carv         ###   ########.fr       */
+/*   Created: 2025/06/23 20:26:28 by jde-carv          #+#    #+#             */
+/*   Updated: 2025/06/23 20:28:59 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	load_background(t_game *game)
+void	load_jumpl_image(t_game *game, t_entity *player)
 {
-	game->bg_img = mlx_xpm_file_to_image(game->mlx, "assets/background/background.xpm", &game->bg_width, &game->bg_height);
+	player->image->jumpl_img[0] = mlx_xpm_file_to_image(game->mlx, "assets/jump/jump-left.xpm", &player->image->width, &player->image->height);
 }

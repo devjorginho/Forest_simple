@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_background.c                                  :+:      :+:    :+:   */
+/*   load_landing_left.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/23 01:38:22 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/23 17:31:57 by jde-carv         ###   ########.fr       */
+/*   Created: 2025/06/23 01:33:32 by devjorginho       #+#    #+#             */
+/*   Updated: 2025/06/23 21:34:08 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	load_background(t_game *game)
+void	load_landingl_image(t_game *game, t_entity *player)
 {
-	game->bg_img = mlx_xpm_file_to_image(game->mlx, "assets/background/background.xpm", &game->bg_width, &game->bg_height);
+	player->image->landingl_img[0] = mlx_xpm_file_to_image(game->mlx, "assets/landing/landing_l.xpm", &player->image->width, &player->image->height);
 }

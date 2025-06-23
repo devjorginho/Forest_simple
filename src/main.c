@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 17:16:08 by jde-carv          #+#    #+#             */
-/*   Updated: 2025/06/23 11:39:11 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/06/23 21:53:01 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	game_loop(t_game *game)
 	i = 0;
 	while (i < game->count_entities)
 		gravity_system(game, &game->entities[i++]);
-	usleep(10000);
+	usleep(14500);
 		game->n_frames++;
 	return (0);
 }
