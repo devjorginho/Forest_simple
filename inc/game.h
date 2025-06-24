@@ -6,7 +6,7 @@
 /*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:41:57 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/23 11:11:29 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/06/25 00:16:58 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct s_game
 	int			bg_width;
 	int			bg_height;
 	size_t		n_frames;
+	int			joke_cooldown;
+	int			bg_sound_playing;
 } t_game;
 
 #endif

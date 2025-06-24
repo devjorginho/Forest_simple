@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 17:16:08 by jde-carv          #+#    #+#             */
-/*   Updated: 2025/06/23 21:53:01 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/06/25 00:24:16 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@ int	game_loop(t_game *game)
 	int	i;
 
 	i = 0;
+	if (game->joke_cooldown > 0)
+        game->joke_cooldown--;
 	mlx_clear_window(game->mlx, game->window);
 	mlx_put_image_to_window(game->mlx, game->window, game->bg_img, 0, 0);
+	bg_sound(game);
+	tell_a_joke(game);
 	while (i < game->count_entities)
 		draw_system(game, &game->entities[i++]);
 	i = 0;

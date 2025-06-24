@@ -1,9 +1,0 @@
-{
-	"files.associations": {
-		"so_long.h": "c",
-		"stdio.h": "c",
-		"components.h": "c",
-		"entity.h": "c",
-		"stdlib.h": "c"
-	}
-}
