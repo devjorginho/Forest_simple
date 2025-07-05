@@ -1,0 +1,3 @@
+{
+	"codam-norminette-3.command": "norminette", // command that the highlighter executes to get the norm errors
+}

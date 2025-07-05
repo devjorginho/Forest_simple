@@ -6,7 +6,7 @@
 /*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:58:48 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/25 00:15:01 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/07/05 02:07:16 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	load_rright_image(t_game *game, t_entity *player);
 void	load_rleft_image(t_game *game, t_entity *player);
 void	load_jumpr_image(t_game *game, t_entity *player);
 void	load_jumpl_image(t_game *game, t_entity *player);
+void	draw_img_to_framebuffer(t_game *game, t_dataimg *source, t_position position);
+void	draw_pixel_to_framebuffer(t_game *game, t_dataimg *dataimg, t_position position, int color);
 void	tell_a_joke(t_game *game);
 void	bg_sound(t_game *game);
 
@@ -51,6 +53,8 @@ void	load_background(t_game *game);
 
 //Entities
 t_entity	*new_player(t_game *game);
+t_entity	*second_player(t_game *game);
+
 
 
 #endif

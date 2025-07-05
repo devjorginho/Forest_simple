@@ -6,7 +6,7 @@
 /*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:44:11 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/25 00:31:09 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/07/04 21:54:59 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,25 @@ void tell_a_joke(t_game *game)
 {
     if (game->keymap['z'] && game->joke_cooldown == 0)
     {
-        system("aplay sounds/joke1.wav &");
+        const char *jokes[] = {
+            "aplay game_sounds/joke1.wav &",
+            "aplay game_sounds/joke2.wav &",
+            "aplay game_sounds/joke3.wav &",
+            "aplay game_sounds/joke4.wav &"
+        };
+
+        int i = rand() % 4;
+        system(jokes[i]);
         game->joke_cooldown = 400;
         game->keymap['z'] = 0;
     }
 }
+
 void bg_sound(t_game *game)
 {
     if (!game->bg_sound_playing)
     {
-		system("aplay sounds/background_low.wav &");
+		system("aplay game_sounds/background_sound.wav &");
         game->bg_sound_playing = 1;
     }
 }

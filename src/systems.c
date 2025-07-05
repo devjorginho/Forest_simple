@@ -6,7 +6,7 @@
 /*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:35:42 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/25 00:02:08 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/07/05 03:04:36 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,56 +33,62 @@ void	collision_system(t_game *game, t_entity *entity)
 }
 void	draw_system(t_game *game, t_entity *entity)
 {
+	t_dataimg dataimg;
+
 	if (!entity->image || !entity->position)
 		return ;
-	if (entity->gravity->is_jumping && entity->animation->last_direction == 0 && entity->velocity->y < 0)
-	{
-		mlx_put_image_to_window(game->mlx, game->window,
-			entity->image->jumpr_img[0],
-			(int)entity->position->x, (int)entity->position->y);
-	}
-	else if (entity->gravity->is_jumping && entity->animation->last_direction == 1 && entity->velocity->y < 0)
-	{
-		mlx_put_image_to_window(game->mlx, game->window,
-			entity->image->jumpl_img[0],
-			(int)entity->position->x, (int)entity->position->y);
-	}
-	else if (entity->velocity->y > 0 && entity->animation->last_direction == 0)
-	{
-		mlx_put_image_to_window(game->mlx, game->window,
-			entity->image->landingr_img[0],
-			(int)entity->position->x, (int)entity->position->y);
-	}
-	else if (entity->velocity->y > 0 && entity->animation->last_direction == 1)
-	{
-		mlx_put_image_to_window(game->mlx, game->window,
-			entity->image->landingl_img[0],
-			(int)entity->position->x, (int)entity->position->y);
-	}
-	else if (entity->animation->p_runing_r)
-	{
-		mlx_put_image_to_window(game->mlx, game->window,
-			entity->image->rr_img[(game->n_frames / 6) % 8],
-			(int)entity->position->x, (int)entity->position->y);
-	}
-	else if (entity->animation->p_runing_l)
-	{
-		mlx_put_image_to_window(game->mlx, game->window,
-			entity->image->rl_img[(game->n_frames / 6) % 8],
-			(int)entity->position->x, (int)entity->position->y);
-	}
-	else if (entity->animation->last_direction == 0)
-	{
-		mlx_put_image_to_window(game->mlx, game->window,
-			entity->image->idler_img[(game->n_frames / 6) % 12],
-			(int)entity->position->x, (int)entity->position->y);
-	}
-	else
-	{
-		mlx_put_image_to_window(game->mlx, game->window,
-			entity->image->idlel_img[(game->n_frames / 6) % 12],
-			(int)entity->position->x, (int)entity->position->y);
-	}
+	dataimg.image = entity->image->landingl_img[0];
+	dataimg.width = entity->image->width;
+	dataimg.height = entity->image->height;
+	draw_img_to_framebuffer(game, &dataimg, *entity->position);
+	//if (entity->gravity->is_jumping && entity->animation->last_direction == 0 && entity->velocity->y < 0)
+	//{
+	//	mlx_put_image_to_window(game->mlx, game->window,
+	//		entity->image->jumpr_img[0],
+	//		(int)entity->position->x, (int)entity->position->y);
+	//}
+	//else if (entity->gravity->is_jumping && entity->animation->last_direction == 1 && entity->velocity->y < 0)
+	//{
+	//	mlx_put_image_to_window(game->mlx, game->window,
+	//		entity->image->jumpl_img[0],
+	//		(int)entity->position->x, (int)entity->position->y);
+	//}
+	//else if (entity->velocity->y > 0 && entity->animation->last_direction == 0)
+	//{
+	//	mlx_put_image_to_window(game->mlx, game->window,
+	//		entity->image->landingr_img[0],
+	//		(int)entity->position->x, (int)entity->position->y);
+	//}
+	//else if (entity->velocity->y > 0 && entity->animation->last_direction == 1)
+	//{
+	//	mlx_put_image_to_window(game->mlx, game->window,
+	//		entity->image->landingl_img[0],
+	//		(int)entity->position->x, (int)entity->position->y);
+	//}
+	//else if (entity->animation->p_runing_r)
+	//{
+	//	mlx_put_image_to_window(game->mlx, game->window,
+	//		entity->image->rr_img[(game->n_frames / 6) % 8],
+	//		(int)entity->position->x, (int)entity->position->y);
+	//}
+	//else if (entity->animation->p_runing_l)
+	//{
+	//	mlx_put_image_to_window(game->mlx, game->window,
+	//		entity->image->rl_img[(game->n_frames / 6) % 8],
+	//		(int)entity->position->x, (int)entity->position->y);
+	//}
+	//else if (entity->animation->last_direction == 0)
+	//{
+	//	mlx_put_image_to_window(game->mlx, game->window,
+	//		entity->image->idler_img[(game->n_frames / 6) % 12],
+	//		(int)entity->position->x, (int)entity->position->y);
+	//}
+	//else
+	//{
+	//	mlx_put_image_to_window(game->mlx, game->window,
+	//		entity->image->idlel_img[(game->n_frames / 6) % 12],
+	//		(int)entity->position->x, (int)entity->position->y);
+	//}
 }
 		
 void	gravity_system(t_game *game, t_entity *entity)

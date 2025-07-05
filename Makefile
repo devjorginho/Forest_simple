@@ -6,13 +6,13 @@
 #    By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/21 17:00:00 by devjorginho       #+#    #+#              #
-#    Updated: 2025/06/23 01:21:57 by devjorginho      ###   ########.fr        #
+#    Updated: 2025/07/05 02:40:17 by devjorginho      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= so_long
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror -Iinc
+CFLAGS	= -Iinc
 
 MLX_DIR	= ./minilibx-linux
 MLX_LIB	= -L$(MLX_DIR) -lmlx -lXext -lX11 -lm

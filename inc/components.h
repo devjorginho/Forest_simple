@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   components.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:33:06 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/23 21:13:10 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/07/05 01:31:41 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,28 @@ typedef struct s_keyboard
 
 typedef struct	s_image
 {
-	void	**idler_img;
-	void	**idlel_img;
-	void	**rr_img;
-	void	**rl_img;
-	void	**jumpr_img;
-	void	**jumpl_img;
-	void	**landingr_img;
-	void	**landingl_img;
+	void	*idler_img[12];
+	void	*idlel_img[12];
+	void	*rr_img[8];
+	void	*rl_img[8];
+	void	*jumpr_img[1];
+	void	*jumpl_img[1];
+	void	*landingr_img[1];
+	void	*landingl_img[1];
 	int		width;
 	int		height;
 } t_image;
 
+typedef struct s_dataimg
+{
+	char 	*addr;
+	int		size_line;
+	int		bpp;
+	int		endian;
+	int		width;
+	int		height;
+	void	*image;
+} t_dataimg;
 typedef struct	s_gravity
 {
 	int		is_jumping;
