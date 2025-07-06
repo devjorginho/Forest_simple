@@ -6,7 +6,7 @@
 /*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:33:06 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/05 01:31:41 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/07/06 00:59:27 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,13 @@ typedef struct	s_image
 	int		width;
 	int		height;
 } t_image;
+
+typedef struct s_sprite
+{
+	void	*img;
+	int		w;
+	int		h;
+} t_sprite;
 
 typedef struct s_dataimg
 {

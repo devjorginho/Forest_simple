@@ -6,139 +6,191 @@
 /*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:35:42 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/05 03:04:36 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/07/06 01:45:17 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	collision_system(t_game *game, t_entity *entity)
+void	collision_system(t_game *game)
 {
 	int			i;
 	t_entity	*b_entity;
 
 	i = 0;
-	if (!entity->position || !entity->collision)
-		return ;
 	while (i < game->count_entities)
 	{
+		if (!game->entities[i].position || game->entities[i].collision)
+			return ;
 		b_entity = &game->entities[i];
-		if (entity != b_entity && b_entity->position && b_entity->collision)
+		if (&game->entities[i] != b_entity && b_entity->position && b_entity->collision)
 		{
-			if (collision_checker(entity, b_entity))
+			if (collision_checker(&game->entities[i], b_entity))
 				printf("Colidindo");
 		}
 		i++;
 	}
 }
-void	draw_system(t_game *game, t_entity *entity)
+void	draw_system(t_game *game)
 {
 	t_dataimg dataimg;
+	int i;
 
-	if (!entity->image || !entity->position)
-		return ;
-	dataimg.image = entity->image->landingl_img[0];
-	dataimg.width = entity->image->width;
-	dataimg.height = entity->image->height;
-	draw_img_to_framebuffer(game, &dataimg, *entity->position);
-	//if (entity->gravity->is_jumping && entity->animation->last_direction == 0 && entity->velocity->y < 0)
-	//{
-	//	mlx_put_image_to_window(game->mlx, game->window,
-	//		entity->image->jumpr_img[0],
-	//		(int)entity->position->x, (int)entity->position->y);
-	//}
-	//else if (entity->gravity->is_jumping && entity->animation->last_direction == 1 && entity->velocity->y < 0)
-	//{
-	//	mlx_put_image_to_window(game->mlx, game->window,
-	//		entity->image->jumpl_img[0],
-	//		(int)entity->position->x, (int)entity->position->y);
-	//}
-	//else if (entity->velocity->y > 0 && entity->animation->last_direction == 0)
-	//{
-	//	mlx_put_image_to_window(game->mlx, game->window,
-	//		entity->image->landingr_img[0],
-	//		(int)entity->position->x, (int)entity->position->y);
-	//}
-	//else if (entity->velocity->y > 0 && entity->animation->last_direction == 1)
-	//{
-	//	mlx_put_image_to_window(game->mlx, game->window,
-	//		entity->image->landingl_img[0],
-	//		(int)entity->position->x, (int)entity->position->y);
-	//}
-	//else if (entity->animation->p_runing_r)
-	//{
-	//	mlx_put_image_to_window(game->mlx, game->window,
-	//		entity->image->rr_img[(game->n_frames / 6) % 8],
-	//		(int)entity->position->x, (int)entity->position->y);
-	//}
-	//else if (entity->animation->p_runing_l)
-	//{
-	//	mlx_put_image_to_window(game->mlx, game->window,
-	//		entity->image->rl_img[(game->n_frames / 6) % 8],
-	//		(int)entity->position->x, (int)entity->position->y);
-	//}
-	//else if (entity->animation->last_direction == 0)
-	//{
-	//	mlx_put_image_to_window(game->mlx, game->window,
-	//		entity->image->idler_img[(game->n_frames / 6) % 12],
-	//		(int)entity->position->x, (int)entity->position->y);
-	//}
-	//else
-	//{
-	//	mlx_put_image_to_window(game->mlx, game->window,
-	//		entity->image->idlel_img[(game->n_frames / 6) % 12],
-	//		(int)entity->position->x, (int)entity->position->y);
-	//}
-}
-		
-void	gravity_system(t_game *game, t_entity *entity)
-{
-	(void) game;
-	if(!entity->gravity || !entity->position)
-		return;
-	if (entity->gravity->is_jumping)
-		entity->velocity->y += 0.35f;
-	if (game->keymap['w'] && !entity->gravity->is_jumping)
+	i = 0;
+	while(i < game->count_entities)
 	{
-		entity->velocity->y = -9.f;
-		entity->gravity->is_jumping = 1;
-	}
-	entity->position->y += entity->velocity->y;
-	if (entity->position->y >= 600)
-	{
-		entity->position->y = 600;
-		entity->velocity->y = 0;
-		entity->gravity->is_jumping = 0;
+		if ((game->entities[i].sprite) && game->entities[i].position)
+		{
+			dataimg.image = game->entities[i].sprite->img;
+			dataimg.width = game->entities[i].sprite->w;
+			dataimg.height = game->entities[i].sprite->h;
+			if(i == 4)
+				game->entities[i].position->x = game->entities[i].position->x - game->segredo;
+			if(i == 3)
+				game->entities[i].position->x = game->entities[i].position->x - game->segredo * 0.35;
+			if(i == 2)
+				game->entities[i].position->x = game->entities[i].position->x - game->segredo * 0.18;
+			if(i == 1)
+				game->entities[i].position->x = game->entities[i].position->x - game->segredo * 0.10;
+			draw_img_to_framebuffer(game, &dataimg, *game->entities[i].position);
+		}
+		else if(game->entities[i].image && game->entities[i].position)
+		{
+			if (game->entities[i].gravity->is_jumping && game->entities[i].animation->last_direction == 0 && game->entities[i].velocity->y < 0)
+			{
+				dataimg.image = game->entities[i].image->jumpr_img[0];
+				dataimg.width = 34;
+				dataimg.height = 68;
+				draw_img_to_framebuffer(game, &dataimg, *game->entities[i].position);
+			}
+			else if (game->entities[i].gravity->is_jumping && game->entities[i].animation->last_direction == 1 && game->entities[i].velocity->y < 0)
+			{
+				dataimg.image = game->entities[i].image->jumpl_img[0];
+				dataimg.width = 34;
+				dataimg.height = 68;
+				draw_img_to_framebuffer(game, &dataimg, *game->entities[i].position);
+			}
+			else if (game->entities[i].velocity->y > 0 && game->entities[i].animation->last_direction == 0)
+			{
+				dataimg.image = game->entities[i].image->landingl_img[0];
+				dataimg.width = 15;
+				dataimg.height = 15;
+				draw_img_to_framebuffer(game, &dataimg, *game->entities[i].position);
+			}
+			else if (game->entities[i].velocity->y > 0 && game->entities[i].animation->last_direction == 1)
+			{
+				dataimg.image = game->entities[i].image->landingr_img[0];
+				dataimg.width = 15;
+				dataimg.height = 15;
+				draw_img_to_framebuffer(game, &dataimg, *game->entities[i].position);
+			}
+			else if (game->entities[i].animation->p_runing_r)
+			{
+				dataimg.image = game->entities[i].image->rr_img[(game->n_frames) % 8];
+				dataimg.width = 42;
+				dataimg.height = 66;
+				draw_img_to_framebuffer(game, &dataimg, *game->entities[i].position);
+			}
+			else if (game->entities[i].animation->p_runing_l)
+			{
+				dataimg.image = game->entities[i].image->rl_img[(game->n_frames) % 8];
+				dataimg.width = 42;
+				dataimg.height = 66;
+				draw_img_to_framebuffer(game, &dataimg, *game->entities[i].position);
+			}
+			else if (game->entities[i].animation->last_direction == 0)
+			{
+				dataimg.image = game->entities[i].image->idler_img[(game->n_frames) % 12];
+				dataimg.width = 38;
+				dataimg.height = 68;
+				draw_img_to_framebuffer(game, &dataimg, *game->entities[i].position);
+			}
+			else
+			{
+				dataimg.image = game->entities[i].image->idlel_img[(game->n_frames) % 12];
+				dataimg.width = 38;
+				dataimg.height = 68;
+				draw_img_to_framebuffer(game, &dataimg, *game->entities[i].position);
+			}
+		}
+		i++;
 	}
 }
+	
+//void	gravity_system(t_game *game)
+//{
+//	int i;
 
-void movement_system(t_game *game, t_entity *entity)
+//	i = 0;
+//	while(i < game->count_entities)
+//	{
+//		if (game->entities[i].gravity && game->entities[i].position && game->entities[i].velocity)
+//		{
+//			if (game->entities[i].gravity->is_jumping)
+//				game->entities[i].velocity->y += 0.35f;
+//			else if (game->keymap['w'] && !game->entities[i].gravity->is_jumping)
+//			{
+//				game->entities[i].velocity->y = -9.f;
+//				game->entities[i].gravity->is_jumping = 1;
+//			}
+//			game->entities[i].position->y += game->entities[i].velocity->y;
+//			if (game->entities[i].position->y >= 400)
+//			{
+//				game->entities[i].position->y = 400;
+//				game->entities[i].velocity->y = 0;
+//				game->entities[i].gravity->is_jumping = 0;
+//			}
+//		}
+//		printf("oi");
+//		i++;
+//	}
+//}
+void	gravity_system(t_game *game)
 {
-    if (!entity->velocity || !entity->keyboard || !entity->position)
-        return ;
-   	else if (game->keymap['d'])
+	int i = 0;
+	while(i < game->count_entities)
 	{
-		entity->animation->p_runing_r = 1;
-		entity->animation->p_runing_l = 0;
-		entity->animation->last_direction = 0;
-		entity->velocity->x = 1.7f;
-		if(game->keymap[65505])
-			entity->velocity->x += 3.2f;
+		if(game->entities[i].gravity && game->entities[i].position)
+			game->entities[i].position->y += 3;
+		i++;
 	}
-	else if (game->keymap['a'])
+}
+void movement_system(t_game *game)
+{
+	int i;
+
+	i = 0;
+	while(i < game->count_entities)
 	{
-		entity->animation->p_runing_l = 1;
-		entity->animation->p_runing_r = 0;
-		entity->animation->last_direction = 1;
-		entity->velocity->x = -1.7f;
-		if(game->keymap[65505])
-			entity->velocity->x -= 3.2f;
+		if (game->entities[i].velocity && game->entities[i].keyboard && game->entities[i].position)
+		{
+			if (game->keymap['d'])
+			{
+				game->entities[i].animation->p_runing_r = 1;
+				game->entities[i].animation->p_runing_l = 0;
+				game->entities[i].animation->last_direction = 0;
+				game->entities[i].velocity->x = 3.2f;
+				if(game->keymap[65505])
+					game->entities[i].velocity->x += 4.2f;
+			}
+			else if (game->keymap['a'])
+			{
+				game->entities[i].animation->p_runing_l = 1;
+				game->entities[i].animation->p_runing_r = 0;
+				game->entities[i].animation->last_direction = 1;
+				game->entities[i].velocity->x = -3.2f;
+				if(game->keymap[65505])
+					game->entities[i].velocity->x -= 4.2f;
+			}
+			else
+			{
+				game->entities[i].animation->p_runing_r = 0;
+				game->entities[i].animation->p_runing_l = 0;
+				game->entities[i].velocity->x = 0;
+			}
+			game->segredo = game->entities[i].velocity->x;
+			game->entities[i].position->x += game->entities[i].velocity->x;
+		}		
+		i++;
 	}
-	else
-	{
-		entity->animation->p_runing_r = 0;
-		entity->animation->p_runing_l = 0;
-		entity->velocity->x = 0;
-	}
-    entity->position->x += entity->velocity->x;
 }

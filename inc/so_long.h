@@ -6,7 +6,7 @@
 /*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:58:48 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/05 02:07:16 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/07/06 01:37:32 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@
 #include <string.h>
 
 // Systems
-void	collision_system(t_game *game, t_entity *entity);
-void	draw_system(t_game *game, t_entity *entity);
-void	gravity_system(t_game *game, t_entity *entity);
+//wavoid	collision_system(t_game *game, t_entity *entity);
+void	draw_system(t_game *game);
+void	gravity_system(t_game *game);
 void	jump_system(t_game *game, t_entity *entity);
-void	movement_system(t_game *game, t_entity *entity);
-void	*scale_frame_buffer(t_game *game, t_image *image, int scale);
+void	movement_system(t_game *game);
+//void	*scale_frame_buffer(t_game *game, t_image *image, int scale);
 
 // Utility functions
 int		keydown(int keycode, t_game *game);
@@ -49,12 +49,9 @@ void	bg_sound(t_game *game);
 void	load_landingl_image(t_game *game, t_entity *player);
 void	load_landingr_image(t_game *game, t_entity *player);
 
-void	load_background(t_game *game);
-
 //Entities
 t_entity	*new_player(t_game *game);
-t_entity	*second_player(t_game *game);
-
+t_entity	*e_background(t_game *game);
 
 
 #endif

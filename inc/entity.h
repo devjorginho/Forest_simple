@@ -6,7 +6,7 @@
 /*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:30:58 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/06/23 11:11:22 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/07/05 20:00:50 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef	struct s_entity
 	t_collision	*collision;
 	t_velocity	*velocity;
 	t_animation	*animation;
+	t_sprite	*sprite;
 } t_entity;
 
 #endif
