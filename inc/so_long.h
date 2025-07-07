@@ -6,7 +6,7 @@
 /*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:58:48 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/07 01:14:06 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/07/07 13:16:54 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "../minilibx-linux/mlx.h"
 #include "components.h"
 #include "entity.h"
+#include "get_next_line.h"
 #include "game.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,12 +27,10 @@
 #define	FRAME_BUFFER_X 432
 
 // Systems
-//void	collision_system(t_game *game, t_entity *entity);
 void	draw_system(t_game *game);
 void	gravity_system(t_game *game);
 void	jump_system(t_game *game, t_entity *entity);
 void	movement_system(t_game *game);
-//void	*scale_frame_buffer(t_game *game, t_image *image, int scale);
 
 // Utility functions
 int		keydown(int keycode, t_game *game);

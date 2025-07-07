@@ -6,7 +6,7 @@
 /*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:41:57 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/07 01:14:42 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/07/07 13:28:41 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 typedef struct s_game
 {
 	t_entity	entities[MAX_ENTITIES];
+	char		**map;
+	int			map_width;
+	int			map_height;
 	void		*mlx;
 	void		*window;
 	void		*framebuffer;

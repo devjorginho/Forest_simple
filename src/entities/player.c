@@ -6,7 +6,7 @@
 /*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 19:48:08 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/07 01:27:10 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/07/07 13:10:10 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@ t_entity *new_player(t_game *game)
 	player->velocity = calloc(1, sizeof(t_velocity));
 	player->velocity->x = 0;
 	player->velocity->y = 0;
-	player->collision = calloc(1, sizeof(t_collision));
-	player->collision->width = 32;
-	player->collision->height = 32;
 	player->keyboard = calloc(1, sizeof(t_keyboard));
 	game->entities[game->count_entities] = *player;
 	game->count_entities++;

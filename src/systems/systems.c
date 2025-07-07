@@ -6,31 +6,12 @@
 /*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:35:42 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/07 01:42:52 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/07/07 13:06:22 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	collision_system(t_game *game)
-{
-	int			i;
-	t_entity	*b_entity;
-
-	i = 0;
-	while (i < game->count_entities)
-	{
-		if (!game->entities[i].position || game->entities[i].collision)
-			return ;
-		b_entity = &game->entities[i];
-		if (&game->entities[i] != b_entity && b_entity->position && b_entity->collision)
-		{
-			if (collision_checker(&game->entities[i], b_entity))
-				printf("Colidindo");
-		}
-		i++;
-	}
-}
 void	draw_system(t_game *game)
 {
 	t_dataimg dataimg;
