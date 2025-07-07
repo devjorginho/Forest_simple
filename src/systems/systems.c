@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   systems.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:35:42 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/07 13:06:22 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/07/07 15:52:44 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ void	draw_system(t_game *game)
 			dataimg.image = game->entities[i].sprite->img;
 			dataimg.width = game->entities[i].sprite->w;
 			dataimg.height = game->entities[i].sprite->h;
-			//if(i == 4)
-			//	game->entities[i].position->x = game->entities[i].position->x - game->segredo;
-			//if(i == 3)
-			//	game->entities[i].position->x = game->entities[i].position->x - game->segredo * 0.35;
-			//if(i == 2)
-			//	game->entities[i].position->x = game->entities[i].position->x - game->segredo * 0.18;
-			//if(i == 1)
-			//	game->entities[i].position->x = game->entities[i].position->x - game->segredo * 0.10;
+			if(i == 4)
+				game->entities[i].position->x = game->entities[i].position->x - game->segredo;
+			if(i == 3)
+				game->entities[i].position->x = game->entities[i].position->x - game->segredo * 0.35;
+			if(i == 2)
+				game->entities[i].position->x = game->entities[i].position->x - game->segredo * 0.18;
+			if(i == 1)
+				game->entities[i].position->x = game->entities[i].position->x - game->segredo * 0.10;
 			draw_img_to_framebuffer(game, &dataimg, *game->entities[i].position);
 		}
 		else if(game->entities[i].image && game->entities[i].position)
