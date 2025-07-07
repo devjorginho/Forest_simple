@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   floor.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 23:45:53 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/07 01:48:28 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/07/07 16:39:36 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "so_long.h"
 
-t_entity *e_floor(t_game *game)
+void e_floor(t_game *game)
 {	
 	void	*image;
 	int		w;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   components.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:33:06 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/07 13:06:10 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/07/07 18:45:25 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ typedef struct s_animation
 	int		is_jumping;
 } t_animation;
 
+typedef struct s_float_item
+{
+	int		dir;
+	int		initial_y;
+}t_float_item;
 typedef struct	s_velocity
 {
 	float x;

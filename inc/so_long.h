@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:58:48 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/07 13:16:54 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/07/07 18:27:25 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "get_next_line.h"
 #include "game.h"
 #include <stdio.h>
+#include <math.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
@@ -31,7 +32,8 @@ void	draw_system(t_game *game);
 void	gravity_system(t_game *game);
 void	jump_system(t_game *game, t_entity *entity);
 void	movement_system(t_game *game);
-
+void	float_item_system(t_game *game);
+void	collision_system(t_game *game);
 // Utility functions
 int		keydown(int keycode, t_game *game);
 int		keyup(int keycode, t_game *game);
@@ -53,9 +55,10 @@ void	load_landingl_image(t_game *game, t_entity *player);
 void	load_landingr_image(t_game *game, t_entity *player);
 
 //Entities
-t_entity	*new_player(t_game *game);
-t_entity	*e_background(t_game *game);
-t_entity	*e_floor(t_game *game);
+void	new_player(t_game *game);
+void	e_background(t_game *game);
+void	e_collect(t_game *game);
+void	e_floor(t_game *game);
 
 
 #endif

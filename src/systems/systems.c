@@ -6,7 +6,7 @@
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:35:42 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/07 15:52:44 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/07/07 18:44:49 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ void	draw_system(t_game *game)
 			dataimg.width = game->entities[i].sprite->w;
 			dataimg.height = game->entities[i].sprite->h;
 			if(i == 4)
-				game->entities[i].position->x = game->entities[i].position->x - game->segredo;
+				game->entities[i].position->x = game->entities[i].position->x - game->segredo * 0.90;
 			if(i == 3)
-				game->entities[i].position->x = game->entities[i].position->x - game->segredo * 0.35;
+				game->entities[i].position->x = game->entities[i].position->x - game->segredo * 0.45;
 			if(i == 2)
-				game->entities[i].position->x = game->entities[i].position->x - game->segredo * 0.18;
+				game->entities[i].position->x = game->entities[i].position->x - game->segredo * 0.27;
 			if(i == 1)
-				game->entities[i].position->x = game->entities[i].position->x - game->segredo * 0.10;
+				game->entities[i].position->x = game->entities[i].position->x - game->segredo * 0.09;
 			draw_img_to_framebuffer(game, &dataimg, *game->entities[i].position);
 		}
 		else if(game->entities[i].image && game->entities[i].position)
@@ -67,28 +67,28 @@ void	draw_system(t_game *game)
 			}
 			else if (game->entities[i].animation->p_runing_r)
 			{
-				dataimg.image = game->entities[i].image->rr_img[(game->n_frames) % 8];
+				dataimg.image = game->entities[i].image->rr_img[(game->n_frames / 3) % 8];
 				dataimg.width = 42;
 				dataimg.height = 66;
 				draw_img_to_framebuffer(game, &dataimg, *game->entities[i].position);
 			}
 			else if (game->entities[i].animation->p_runing_l)
 			{
-				dataimg.image = game->entities[i].image->rl_img[(game->n_frames) % 8];
+				dataimg.image = game->entities[i].image->rl_img[(game->n_frames / 3) % 8];
 				dataimg.width = 42;
 				dataimg.height = 66;
 				draw_img_to_framebuffer(game, &dataimg, *game->entities[i].position);
 			}
 			else if (game->entities[i].animation->last_direction == 0)
 			{
-				dataimg.image = game->entities[i].image->idler_img[(game->n_frames) % 12];
+				dataimg.image = game->entities[i].image->idler_img[(game->n_frames / 3) % 12];
 				dataimg.width = 38;
 				dataimg.height = 68;
 				draw_img_to_framebuffer(game, &dataimg, *game->entities[i].position);
 			}
 			else
 			{
-				dataimg.image = game->entities[i].image->idlel_img[(game->n_frames) % 12];
+				dataimg.image = game->entities[i].image->idlel_img[(game->n_frames / 3) % 12];
 				dataimg.width = 38;
 				dataimg.height = 68;
 				draw_img_to_framebuffer(game, &dataimg, *game->entities[i].position);
@@ -124,6 +124,30 @@ void	gravity_system(t_game *game)
 		i++;
 	}
 }
+
+void	float_item_system(t_game *game)
+{
+
+	int	i;
+	int	initial_y;
+
+	i = 0;
+	
+	while(i < game->count_entities)
+	{
+		if (game->entities[i].position && game->entities[i].float_item)
+		{
+			game->entities[i].position->y = game->entities[i].position->y
+				+ game->entities[i].float_item->dir * 0.5;
+			if (game->entities[i].position->y > game->entities[i].float_item->initial_y + 10)
+				game->entities[i].float_item->dir = -1;
+			if (game->entities[i].position->y < game->entities[i].float_item->initial_y - 10)
+				game->entities[i].float_item->dir = 1;
+
+		}
+		i++;
+	}
+}
 void movement_system(t_game *game)
 {
 	int i;
@@ -138,11 +162,11 @@ void movement_system(t_game *game)
 				game->entities[i].animation->p_runing_r = 1;
 				game->entities[i].animation->p_runing_l = 0;
 				game->entities[i].animation->last_direction = 0;
-				game->entities[i].velocity->x = 5.2f;
+				game->entities[i].velocity->x = 2.2f;
 				game->entities[i].position->x += game->entities[i].velocity->x;
 				if(game->keymap[65505])
 				{
-					game->entities[i].velocity->x += 6.4f;
+					game->entities[i].velocity->x += 4.4f;
 				}
 			}
 			else if (game->keymap['a'])
@@ -150,11 +174,11 @@ void movement_system(t_game *game)
 				game->entities[i].animation->p_runing_l = 1;
 				game->entities[i].animation->p_runing_r = 0;
 				game->entities[i].animation->last_direction = 1;
-				game->entities[i].velocity->x = -5.2f;
+				game->entities[i].velocity->x = -2.2f;
 				game->entities[i].position->x += game->entities[i].velocity->x;
 				if(game->keymap[65505])
 				{
-					game->entities[i].velocity->x -= 6.4f;
+					game->entities[i].velocity->x -= 4.4f;
 				}
 			}
 			else

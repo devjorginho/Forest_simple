@@ -6,7 +6,7 @@
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 17:16:08 by jde-carv          #+#    #+#             */
-/*   Updated: 2025/07/07 15:52:29 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/07/07 18:45:01 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ int	game_loop(t_game *game)
         game->joke_cooldown--;
 	bg_sound(game);
 	clear_framebuffer(game);
-	draw_system(game);
+	float_item_system(game);
 	movement_system(game);
 	gravity_system(game);
 	tell_a_joke(game);
+	draw_system(game);
 	//usleep(7000);
 		game->n_frames++;
 	mlx_put_image_to_window(game->mlx, game->window, game->framebuffer, 0, 0);
@@ -31,7 +32,9 @@ int	game_loop(t_game *game)
 void	load_level(t_game *game)
 {
 	game->count_entities = 0;
+	
 	e_background(game);
+	e_collect(game);
 	e_floor(game);
 	new_player(game);
 }

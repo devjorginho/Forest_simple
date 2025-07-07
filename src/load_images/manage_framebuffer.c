@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manage_framebuffer.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 00:41:21 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/07 01:18:47 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/07/07 16:43:45 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -1,3 +1,7 @@
 {
-	"codam-norminette-3.command": "norminette", // command that the highlighter executes to get the norm errors
+	"codam-norminette-3.command": "norminette",
+	"files.associations": {
+		"so_long.h": "c",
+		"string.h": "c"
+	}, // command that the highlighter executes to get the norm errors
 }

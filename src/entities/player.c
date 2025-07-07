@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 19:48:08 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/07 13:10:10 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/07/07 18:45:47 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "so_long.h"
 
-t_entity *new_player(t_game *game)
+void new_player(t_game *game)
 {
 	t_entity *player;
 
@@ -44,5 +44,33 @@ t_entity *new_player(t_game *game)
 	player->keyboard = calloc(1, sizeof(t_keyboard));
 	game->entities[game->count_entities] = *player;
 	game->count_entities++;
-	return (player);
+
+	t_entity *player2;
+
+	player2 = calloc(1, sizeof(t_entity));
+	player2->position = calloc(1, sizeof(t_position));
+	player2->position->x = 256;
+	player2->position->y = 256;
+	player2->image = calloc(1, sizeof(t_image));
+	player2->animation = calloc(1, sizeof(t_animation));
+	player2->animation->last_direction = 0;
+	player2->animation->p_runing_r = 0;
+	player2->animation->p_runing_l = 0;
+	load_idler_image(game, player2);
+	load_idlel_image(game, player2);
+	load_rright_image(game, player2);
+	load_rleft_image(game,player2);
+	load_jumpr_image(game,player2);
+	load_jumpl_image(game,player2);
+	load_landingr_image(game,player2);
+	load_landingl_image(game,player2);
+
+	player2->gravity = calloc(1, sizeof(t_gravity));
+	player2->animation->is_jumping = 0;
+	player2->gravity->velocity = 0.0f;
+	player2->velocity = calloc(1, sizeof(t_velocity));
+	player2->velocity->x = 0;
+	player2->velocity->y = 0;
+	game->entities[game->count_entities] = *player2;
+	game->count_entities++;
 }

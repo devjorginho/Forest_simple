@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   background.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 19:48:43 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/07 01:26:49 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/07/07 16:39:28 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 
 
-t_entity *e_background(t_game *game)
+void e_background(t_game *game)
 {
 	t_entity *background;
 	background = calloc(1, sizeof(t_entity));
@@ -66,5 +66,4 @@ t_entity *e_background(t_game *game)
 	fourth_layer->position->y = 0;
 	game->entities[game->count_entities] = *fourth_layer;
 	game->count_entities++;
-	return (fourth_layer);
 }
