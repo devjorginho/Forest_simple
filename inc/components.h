@@ -6,7 +6,7 @@
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:33:06 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/07 18:45:25 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/07/07 19:43:21 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_animation
 	int		p_runing_l;
 	int		last_direction;
 	int		is_jumping;
+	int		god_mod;
 } t_animation;
 
 typedef struct s_float_item
@@ -44,6 +45,9 @@ typedef struct s_position
 typedef struct s_keyboard
 {
 } t_keyboard;
+typedef struct s_second_keyboard
+{
+} t_second_keyboard;
 
 typedef struct	s_image
 {

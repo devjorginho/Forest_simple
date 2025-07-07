@@ -6,7 +6,7 @@
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 19:48:08 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/07 18:45:47 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/07/07 19:50:24 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void new_player(t_game *game)
 	player2->position->y = 256;
 	player2->image = calloc(1, sizeof(t_image));
 	player2->animation = calloc(1, sizeof(t_animation));
+	player2->second_keyboard = calloc(1, sizeof(t_second_keyboard));
 	player2->animation->last_direction = 0;
 	player2->animation->p_runing_r = 0;
 	player2->animation->p_runing_l = 0;
