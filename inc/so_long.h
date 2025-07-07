@@ -6,7 +6,7 @@
 /*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:58:48 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/06 01:37:32 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/07/07 01:14:06 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@
 #include <unistd.h>
 #include <string.h>
 
+#define	FRAME_BUFFER_Y 768
+#define	FRAME_BUFFER_X 432
+
 // Systems
-//wavoid	collision_system(t_game *game, t_entity *entity);
+//void	collision_system(t_game *game, t_entity *entity);
 void	draw_system(t_game *game);
 void	gravity_system(t_game *game);
 void	jump_system(t_game *game, t_entity *entity);
@@ -42,6 +45,7 @@ void	load_jumpr_image(t_game *game, t_entity *player);
 void	load_jumpl_image(t_game *game, t_entity *player);
 void	draw_img_to_framebuffer(t_game *game, t_dataimg *source, t_position position);
 void	draw_pixel_to_framebuffer(t_game *game, t_dataimg *dataimg, t_position position, int color);
+void	clear_framebuffer(t_game *game);
 void	tell_a_joke(t_game *game);
 void	bg_sound(t_game *game);
 
@@ -52,6 +56,7 @@ void	load_landingr_image(t_game *game, t_entity *player);
 //Entities
 t_entity	*new_player(t_game *game);
 t_entity	*e_background(t_game *game);
+t_entity	*e_floor(t_game *game);
 
 
 #endif

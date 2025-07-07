@@ -6,7 +6,7 @@
 /*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 17:16:08 by jde-carv          #+#    #+#             */
-/*   Updated: 2025/07/06 01:36:59 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/07/07 01:28:53 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	game_loop(t_game *game)
 	int i = 0;
 	if (game->joke_cooldown > 0)
         game->joke_cooldown--;
-	mlx_clear_window(game->mlx, game->window);
 	//bg_sound(game);
+	clear_framebuffer(game);
 	draw_system(game);
 	movement_system(game);
 	gravity_system(game);
@@ -32,6 +32,7 @@ void	load_level(t_game *game)
 {
 	game->count_entities = 0;
 	e_background(game);
+	e_floor(game);
 	new_player(game);
 }
 int	main(void)
@@ -43,7 +44,7 @@ int	main(void)
 	game.framebuffer = mlx_new_image(game.mlx, 1080, 768);
 	load_level(&game);
 	mlx_loop_hook(game.mlx, game_loop, &game);
-	game.segredo = 0;
+	//game.segredo = 0;
 	mlx_hook(game.window, 2, 1L << 0, keydown, &game);
 	mlx_hook(game.window, 3, 1L << 1, keyup, &game);
 	mlx_loop(game.mlx);

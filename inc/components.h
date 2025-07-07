@@ -6,7 +6,7 @@
 /*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:33:06 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/06 00:59:27 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/07/07 01:24:20 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@
 
 typedef struct s_animation
 {
-	int	p_runing_r;
-	int	p_runing_l;
-	int	last_direction;
+	int		p_runing_r;
+	int		p_runing_l;
+	int		last_direction;
+	int		is_jumping;
 } t_animation;
 typedef struct s_collision
 {
@@ -75,9 +76,9 @@ typedef struct s_dataimg
 	int		height;
 	void	*image;
 } t_dataimg;
+
 typedef struct	s_gravity
 {
-	int		is_jumping;
 	float	velocity;
 }	t_gravity;
 

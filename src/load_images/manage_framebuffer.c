@@ -6,7 +6,7 @@
 /*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 00:41:21 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/06 01:44:26 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/07/07 01:18:47 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,25 @@ void	draw_img_to_framebuffer(t_game *game, t_dataimg *source, t_position positio
 			pixel = source->addr + (y * source->size_line + x * (source->bpp / 8));
 			if(*(int *)pixel != (int)0xFF00FF)
 				draw_pixel_to_framebuffer(game, &dataimg, (t_position){position.x + x, position.y + y}, *(int *)pixel);
+			y++;
+		}
+		x++;
+	}
+}
+void	clear_framebuffer(t_game *game)
+{
+	char	*pixel;
+	int		x = 0;
+	int 	y = 0;
+	t_dataimg dataimg;
+	dataimg.addr =  mlx_get_data_addr(game->framebuffer, &dataimg.bpp, &dataimg.size_line, &dataimg.endian);
+
+	while(x < FRAME_BUFFER_X)
+	{
+		y = 0;
+		while(y < FRAME_BUFFER_Y)
+		{
+			draw_pixel_to_framebuffer(game, &dataimg, (t_position){x, y}, (int)0x0FF0);
 			y++;
 		}
 		x++;
