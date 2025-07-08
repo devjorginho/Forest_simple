@@ -2,6 +2,7 @@
 	"codam-norminette-3.command": "norminette",
 	"files.associations": {
 		"so_long.h": "c",
-		"string.h": "c"
+		"string.h": "c",
+		"mlx_int.h": "c"
 	}, // command that the highlighter executes to get the norm errors
 }

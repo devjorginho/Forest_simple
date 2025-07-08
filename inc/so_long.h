@@ -6,7 +6,7 @@
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:58:48 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/07 19:48:06 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/07/08 19:13:08 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 #include "../minilibx-linux/mlx.h"
+#include "../minilibx-linux/mlx_int.h"
 #include "components.h"
 #include "entity.h"
 #include "get_next_line.h"
