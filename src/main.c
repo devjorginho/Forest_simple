@@ -6,7 +6,7 @@
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 17:16:08 by jde-carv          #+#    #+#             */
-/*   Updated: 2025/07/07 19:47:24 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/07/09 20:42:59 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	game_loop(t_game *game)
 	clear_framebuffer(game);
 	float_item_system(game);
 	movement_system(game);
-	second_movement_system(game);
 	gravity_system(game);
 	tell_a_joke(game);
 	draw_system(game);

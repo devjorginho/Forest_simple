@@ -6,7 +6,7 @@
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:58:48 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/08 19:13:08 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/07/09 20:42:40 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	draw_system(t_game *game);
 void	gravity_system(t_game *game);
 void	jump_system(t_game *game, t_entity *entity);
 void	movement_system(t_game *game);
-void	second_movement_system(t_game *game);
 void	float_item_system(t_game *game);
 void	collision_system(t_game *game);
 // Utility functions

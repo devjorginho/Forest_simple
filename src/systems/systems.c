@@ -6,7 +6,7 @@
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:35:42 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/07 19:48:46 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/07/09 20:46:01 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,6 @@ void	float_item_system(t_game *game)
 				game->entities[i].float_item->dir = -1;
 			if (game->entities[i].position->y < game->entities[i].float_item->initial_y - 10)
 				game->entities[i].float_item->dir = 1;
-
 		}
 		i++;
 	}
@@ -181,49 +180,6 @@ void movement_system(t_game *game)
 					game->entities[i].velocity->x -= 2.4f;
 			}
 			else if (game->keymap['h'])
-				game->entities[i].animation->is_jumping = 0;
-			else
-			{
-				game->entities[i].animation->p_runing_r = 0;
-				game->entities[i].animation->p_runing_l = 0;
-				game->entities[i].velocity->x = 0;
-			}
-			game->segredo = game->entities[i].velocity->x;
-			game->entities[i].position->x += game->entities[i].velocity->x;
-		}		
-		i++;
-	}
-}
-void second_movement_system(t_game *game)
-{
-	int i;
-
-	i = 0;
-	while(i < game->count_entities)
-	{
-		if (game->entities[i].velocity && game->entities[i].second_keyboard && game->entities[i].position)
-		{
-			if (game->keymap['l'])
-			{
-				game->entities[i].animation->p_runing_r = 1;
-				game->entities[i].animation->p_runing_l = 0;
-				game->entities[i].animation->last_direction = 0;
-				game->entities[i].velocity->x = 1.2f;
-				game->entities[i].position->x += game->entities[i].velocity->x;
-				if(game->keymap[65505])
-					game->entities[i].velocity->x += 2.4f;
-			}
-			else if (game->keymap['j'])
-			{
-				game->entities[i].animation->p_runing_l = 1;
-				game->entities[i].animation->p_runing_r = 0;
-				game->entities[i].animation->last_direction = 1;
-				game->entities[i].velocity->x = -1.2f;
-				game->entities[i].position->x += game->entities[i].velocity->x;
-				if(game->keymap[65505])
-					game->entities[i].velocity->x -= 2.4f;
-			}
-			else if (game->keymap['i'])
 				game->entities[i].animation->is_jumping = 0;
 			else
 			{
