@@ -1,8 +1,11 @@
 {
-	"codam-norminette-3.command": "norminette",
 	"files.associations": {
-		"so_long.h": "c",
-		"string.h": "c",
-		"mlx_int.h": "c"
-	}, // command that the highlighter executes to get the norm errors
+		"mlx_int.h": "c",
+		"xkblib.h": "c",
+		"xshm.h": "c",
+		"shm.h": "c",
+		"ipc.h": "c",
+		"xutil.h": "c",
+		"xlib.h": "c"
+	}
 }

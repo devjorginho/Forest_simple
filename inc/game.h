@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:41:57 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/07 13:28:41 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/07/17 20:55:10 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdlib.h>
 
 #define MAX_ENTITIES 300
-#define	MAX_KEY_MAP	0x10000
+#define	MAX_KEY_MAP	70000
 
 typedef struct s_game
 {

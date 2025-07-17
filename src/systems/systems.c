@@ -6,7 +6,7 @@
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:35:42 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/09 20:46:01 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/07/17 20:55:38 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,6 @@ void	gravity_system(t_game *game)
 		i++;
 	}
 }
-
 void	float_item_system(t_game *game)
 {
 
