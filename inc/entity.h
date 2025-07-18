@@ -6,16 +6,16 @@
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:30:58 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/07 19:44:21 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/07/18 18:40:09 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ENTITY_H
 # define ENTITY_H
 
-#include "so_long.h"
+# include "so_long.h"
 
-typedef	struct s_entity
+typedef struct s_entity
 {
 	t_position		*position;
 	t_image			*image;
@@ -26,6 +26,6 @@ typedef	struct s_entity
 	t_animation		*animation;
 	t_sprite		*sprite;
 	t_float_item	*float_item;
-} t_entity;
+}					t_entity;
 
 #endif

@@ -13,11 +13,11 @@
 #ifndef GAME_H
 # define GAME_H
 
-#include "so_long.h"
-#include <stdlib.h>
+# include "so_long.h"
+# include <stdlib.h>
 
-#define MAX_ENTITIES 300
-#define	MAX_KEY_MAP	70000
+# define MAX_ENTITIES 300
+# define MAX_KEY_MAP 70000
 
 typedef struct s_game
 {
@@ -37,6 +37,6 @@ typedef struct s_game
 	int			joke_cooldown;
 	int			bg_sound_playing;
 	size_t		n_frames;
-} t_game;
+}				t_game;
 
 #endif

@@ -10,11 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef COMPONENTS_H
 # define COMPONENTS_H
 
-#include "so_long.h"
+# include "so_long.h"
 
 typedef struct s_animation
 {
@@ -23,33 +22,33 @@ typedef struct s_animation
 	int		last_direction;
 	int		is_jumping;
 	int		god_mod;
-} t_animation;
+}			t_animation;
 
 typedef struct s_float_item
 {
 	int		dir;
 	int		initial_y;
-}t_float_item;
-typedef struct	s_velocity
+}			t_float_item;
+typedef struct s_velocity
 {
-	float x;
-	float y;
-} t_velocity;
+	float	x;
+	float	y;
+}			t_velocity;
 
 typedef struct s_position
 {
 	float	x;
 	float	y;
-} t_position;
+}			t_position;
 
 typedef struct s_keyboard
 {
-} t_keyboard;
+}			t_keyboard;
 typedef struct s_second_keyboard
 {
-} t_second_keyboard;
+}			t_second_keyboard;
 
-typedef struct	s_image
+typedef struct s_image
 {
 	void	*idler_img[12];
 	void	*idlel_img[12];
@@ -61,30 +60,29 @@ typedef struct	s_image
 	void	*landingl_img[1];
 	int		width;
 	int		height;
-} t_image;
+}			t_image;
 
 typedef struct s_sprite
 {
 	void	*img;
 	int		w;
 	int		h;
-} t_sprite;
+}			t_sprite;
 
 typedef struct s_dataimg
 {
-	char 	*addr;
+	char	*addr;
 	int		size_line;
 	int		bpp;
 	int		endian;
 	int		width;
 	int		height;
 	void	*image;
-} t_dataimg;
+}			t_dataimg;
 
-typedef struct	s_gravity
+typedef struct s_gravity
 {
 	float	velocity;
-}	t_gravity;
-
+}			t_gravity;
 
 #endif

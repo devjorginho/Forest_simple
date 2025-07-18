@@ -6,7 +6,7 @@
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:44:11 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/07 18:46:01 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/07/18 17:46:37 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,6 @@ void bg_sound(t_game *game)
 		system("paplay game_sounds/background_sound.wav &");
         game->bg_sound_playing = 1;
     }
-}
-int ft_strlen(char *s)
-{
-    int i;
-
-    i = 0;
-    while(s[i])
-        i++;
-    return (i);
 }
 
 
