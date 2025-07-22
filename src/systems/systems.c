@@ -6,7 +6,7 @@
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:35:42 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/17 20:55:38 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/07/22 17:50:00 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ void	draw_system(t_game *game)
 			dataimg.width = game->entities[i].sprite->w;
 			dataimg.height = game->entities[i].sprite->h;
 			if(i == 4 || i == 8 || i == 12)
-				game->entities[i].position->x = game->entities[i].position->x - game->segredo * 0.90;
+				game->entities[i].position->x = game->entities[i].position->x - game->parallax * 0.90;
 			if(i == 3 || i == 7 || i == 11)
-				game->entities[i].position->x = game->entities[i].position->x - game->segredo * 0.45;
+				game->entities[i].position->x = game->entities[i].position->x - game->parallax * 0.45;
 			if(i == 2 || i == 6 || i == 10)
-				game->entities[i].position->x = game->entities[i].position->x - game->segredo * 0.27;
+				game->entities[i].position->x = game->entities[i].position->x - game->parallax * 0.27;
 			if(i == 1 || i == 5 || i == 9)
-				game->entities[i].position->x = game->entities[i].position->x - game->segredo * 0.09;
+				game->entities[i].position->x = game->entities[i].position->x - game->parallax * 0.09;
 			draw_img_to_framebuffer(game, &dataimg, *game->entities[i].position);
 		}
 		else if(game->entities[i].image && game->entities[i].position)
@@ -186,7 +186,7 @@ void movement_system(t_game *game)
 				game->entities[i].animation->p_runing_l = 0;
 				game->entities[i].velocity->x = 0;
 			}
-			game->segredo = game->entities[i].velocity->x;
+			game->parallax = game->entities[i].velocity->x;
 			game->entities[i].position->x += game->entities[i].velocity->x;
 		}		
 		i++;

@@ -6,7 +6,7 @@
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:58:48 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/18 18:40:37 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/07/22 17:48:44 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include "../get_next_line/get_next_line.h"
 
 # define FRAME_BUFFER_Y 768
 # define FRAME_BUFFER_X 432

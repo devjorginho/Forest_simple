@@ -6,7 +6,7 @@
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:41:57 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/17 20:55:10 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/07/22 17:49:22 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_game
 	void		*window;
 	void		*framebuffer;
 	void		*bg_img;
-	float		segredo;
+	float		parallax;
 	int			keymap[MAX_KEY_MAP];
 	int			count_entities;
 	int			bg_width;
