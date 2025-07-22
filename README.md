@@ -1,6 +1,6 @@
 # SIMPLE_GAME
 
-![Gameplay Preview](SIMPLE_GAME/assets/so_long.gif)
+![Gameplay Preview](https://github.com/devjorginho/SIMPLE_GAME/blob/main/assets/so_long.gif)
 
 ## About
 
