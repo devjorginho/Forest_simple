@@ -45,15 +45,6 @@ int	main(void)
 	static t_game	game;
 
 	game.mlx = mlx_init();
-	char **map = read_map("maps/map1.ber");
-
-	if (!map)
-		return (1); // erro ao abrir arquivo
-	for (int i = 0; map[i]; i++)
-		printf("%s", map[i]);
-	free(map);
-
-	
 	game.window = mlx_new_window(game.mlx, 768, 432, "So_long");
 	game.framebuffer = mlx_new_image(game.mlx, (768 * 3), (432 * 3));
 	load_level(&game);
