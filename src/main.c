@@ -6,7 +6,7 @@
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 17:16:08 by jde-carv          #+#    #+#             */
-/*   Updated: 2025/07/22 17:51:52 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/07/22 19:01:34 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,17 @@ int	main(void)
 	static t_game	game;
 
 	game.mlx = mlx_init();
+	char **map = read_map("maps/map1.ber");
+
+	if (!map)
+		return (1); // erro ao abrir arquivo
+	for (int i = 0; map[i]; i++)
+		printf("%s", map[i]);
+	free(map);
+
+	
 	game.window = mlx_new_window(game.mlx, 768, 432, "So_long");
 	game.framebuffer = mlx_new_image(game.mlx, (768 * 3), (432 * 3));
-	int fd = open("../maps/map1.ber", O_RDONLY);
-	char *str = get_next_line(fd);
-	printf("%s", str);
 	load_level(&game);
 	mlx_loop_hook(game.mlx, game_loop, &game);
 	game.parallax = 0;

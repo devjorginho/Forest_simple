@@ -6,13 +6,13 @@
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 21:16:53 by jde-carv          #+#    #+#             */
-/*   Updated: 2025/05/06 18:43:32 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/07/22 18:32:26 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(char *s)
+size_t	linelen(char *s)
 {
 	size_t	i;
 
@@ -47,7 +47,7 @@ char	*copy_to_line(char *line, char *buffer)
 	char	*ptr;
 	char	*to_free;
 
-	newline = malloc(ft_strlen(buffer) + ft_strlen(line) + 1);
+	newline = malloc(linelen(buffer) + linelen(line) + 1);
 	if (!newline)
 		return (NULL);
 	ptr = newline;

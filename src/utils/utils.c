@@ -6,7 +6,7 @@
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:44:11 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/18 17:46:37 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/07/22 18:59:56 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,43 @@ void bg_sound(t_game *game)
 		system("paplay game_sounds/background_sound.wav &");
         game->bg_sound_playing = 1;
     }
+}
+char    **alloc_map(char **map, char *line)
+{
+    int     i;
+    int     j;
+    char    **new;
+
+    i = 0;
+    j = 0;
+    while (map && map[i])
+        i++;
+    new = malloc(sizeof(char *) * (i + 2));
+    if (!new)
+        return (NULL);
+    while(j < i)
+    {
+        new[j] = map[j];
+        j++;
+    }
+    new[i] = line;
+    new[i + 1] = NULL;
+    free(map);
+    return (new);
+}
+char    **read_map(char *path)
+{
+    int     fd;
+    char    *line;
+    char    **map = NULL;
+
+    fd = open(path, O_RDONLY);
+    if (fd < 0)
+        return (NULL);
+    while ((line = get_next_line(fd)))
+        map = alloc_map(map, line);
+    close(fd);
+    return (map);
 }
 
 

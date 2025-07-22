@@ -6,7 +6,7 @@
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 21:20:22 by jde-carv          #+#    #+#             */
-/*   Updated: 2025/05/06 18:43:37 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/07/22 18:32:45 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #  define BUFFER_SIZE 10
 # endif
 
+# include "../libft/libft.h"
 # include <limits.h>
 # include <fcntl.h>
 # include <stdio.h>
