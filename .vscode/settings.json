@@ -1,9 +1,0 @@
-{
-	"files.associations": {
-		"mlx_int.h": "c",
-		"so_long.h": "c",
-		"unistd.h": "c",
-		"game.h": "c",
-		"stdio.h": "c"
-	}
-}
