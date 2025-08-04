@@ -6,7 +6,7 @@
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 10:39:39 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/18 19:17:23 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/08/04 13:47:32 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	load_rright_image(t_game *game, t_entity *player)
 	char	*image_path;
 	int		i;
 
-	image_path = ft_strdup("assets/runright/runr_00.xpm");
+	image_path = strdup("assets/runright/runr_00.xpm");
 	i = 0;
 	while (i < 8)
 	{

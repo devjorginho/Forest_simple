@@ -6,7 +6,7 @@
 /*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 01:33:32 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/18 19:16:51 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/08/04 13:47:32 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	load_idler_image(t_game *game, t_entity *player)
 	int		i;
 
 	i = 0;
-	image_path = ft_strdup("assets/idle/idle00.xpm");
+	image_path = strdup("assets/idle/idle00.xpm");
 	while (i < 10)
 	{
 		player->image->idler_img[i] = mlx_xpm_file_to_image(game->mlx,
