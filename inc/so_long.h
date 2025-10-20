@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:58:48 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/08/04 13:47:50 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/20 14:25:28 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-
+# include <math.h>
 # define FRAME_BUFFER_Y 768
 # define FRAME_BUFFER_X 432
+
 
 // Systems
 void	draw_system(t_game *game);
@@ -43,6 +44,9 @@ void	load_rright_image(t_game *game, t_entity *player);
 void	load_rleft_image(t_game *game, t_entity *player);
 void	load_jumpr_image(t_game *game, t_entity *player);
 void	load_jumpl_image(t_game *game, t_entity *player);
+void    e_platform(t_game *game, int x, int y, int count);
+void    e_collect_at(t_game *game, int x, int y);
+
 void	draw_img_to_framebuffer(t_game *game, t_dataimg *source,
 			t_position position);
 void	draw_pixel_to_framebuffer(t_game *game, t_dataimg *dataimg,

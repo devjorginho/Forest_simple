@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   components.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:33:06 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/07 19:43:21 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/20 13:54:41 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_position
 
 typedef struct s_keyboard
 {
+	int     is_second_player;
 }			t_keyboard;
 typedef struct s_second_keyboard
 {
@@ -84,5 +85,18 @@ typedef struct s_gravity
 {
 	float	velocity;
 }			t_gravity;
+
+typedef struct s_vec2
+{
+	float x;
+	float y;
+}	t_vec2;
+
+typedef struct s_collider
+{
+	float width;
+	float height;
+	int   solid;
+}	t_collider;
 
 #endif

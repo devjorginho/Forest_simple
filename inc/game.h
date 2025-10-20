@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:41:57 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/07/22 18:50:34 by jde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/20 13:54:29 by devjorginho      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct s_game
 	int			bg_height;
 	int			joke_cooldown;
 	int			bg_sound_playing;
+	int         collected_count;
+    int         total_collectables;
 	size_t		n_frames;
 }				t_game;
 
