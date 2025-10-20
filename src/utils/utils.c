@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:44:11 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/10/20 13:45:13 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/10/20 15:28:07 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void tell_a_joke(t_game *game)
     if (game->keymap['z'] && game->joke_cooldown == 0)
     {
         const char *jokes[] = {
-            "paplay game_sounds/joke1.wav &",
+            "pasoplay game_sounds/joke1.wav &",
             "paplay game_sounds/joke2.wav &",
             "paplay game_sounds/joke3.wav &",
             "paplay game_sounds/joke4.wav &"

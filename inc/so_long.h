@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: devjorginho <devjorginho@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jde-carv <jde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 16:58:48 by devjorginho       #+#    #+#             */
-/*   Updated: 2025/10/20 14:25:28 by devjorginho      ###   ########.fr       */
+/*   Updated: 2025/10/20 15:34:17 by jde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	gravity_system(t_game *game);
 void	jump_system(t_game *game, t_entity *entity);
 void	movement_system(t_game *game);
 void	float_item_system(t_game *game);
-void	collision_system(t_game *game);
+//void	collision_system(t_game *game);
 // Utility functions
 int		keydown(int keycode, t_game *game);
 int		keyup(int keycode, t_game *game);
